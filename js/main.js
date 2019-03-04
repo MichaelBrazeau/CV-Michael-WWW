@@ -32,8 +32,6 @@ function Ball(x, y){
         this.x += this.dx;
         this.y += this.dy;
         //makes a circle
-        this.ctx.beginPath();
-        this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
         if(this.y + this.dy < this.radius || this.y + this.dy > canvas.height-this.radius) {
             this.dy = -this.dy;
             this.ctx.fillStyle = getRandomColor();
@@ -43,8 +41,10 @@ function Ball(x, y){
             this.dx = -this.dx;
             this.ctx.fillStyle = getRandomColor();
         }
-        this.ctx.fill();
+        this.ctx.beginPath();
+        this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
         this.ctx.closePath();
+        this.ctx.fill();
     };
 }
 
@@ -66,17 +66,39 @@ for(var ball = 0; ball < amtballs; ++ball){
 
 }
 
+document.addEventListener("mousemove", mouseMoveHandler, false);
+
+function distance(x1, x2, y1, y2){
+    var a = x1 - x2;
+    var b = y1 - y2;
+    
+    return Math.sqrt( a*a + b*b );
+}
+
+function mouseMoveHandler(e){
+    var relativeX = e.clientX;
+    var relativey = e.clientY;
+    for(var i = 0; i <balls.length; ++i){
+        if(distance(ball[i].x, relativeX, ball[i].y, relativey) > 
+            distance(ball[i].x + ball[i].dx, relativeX, ball[i].y + ball[i].dy, relativey)){
+                ball[i].dy = -ball[i].dy;
+                ball[i].dx = -ball[i].dx;
+        }
+     }
+}
+
 var c = canvas.getContext("2d");
+
 // function checkCollison()
 //main event 
 function draw() {
     c.clearRect(0, 0, canvas.width, canvas.height);
     for(var i = 0; i <balls.length; ++i){
-       balls[i].drawBall();;
+       balls[i].drawBall();
     }
-
+    requestAnimationFrame(draw);
 }
 
 //event loop
 //calls draw every 10 milliseconds
-let interval = setInterval(draw, 10);
+draw();
