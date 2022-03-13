@@ -23,8 +23,8 @@ var ballRadius = 2;
 function Ball(x, y){
     this.x = x;
     this.y = y;
-    this.dx = Math.floor((Math.random() * 2) + 1);
-    this.dy = Math.floor((Math.random() * 2) + 1);
+    this.dx = Math.floor((Math.random()) + 1);
+    this.dy = Math.floor((Math.random()) + 1);
     this.radius = ballRadius;
     this.ctx = canvas.getContext("2d");
     this.drawBall = function(){
