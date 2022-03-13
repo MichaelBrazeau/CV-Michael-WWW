@@ -8,6 +8,7 @@
     padding: 0;
     width: 100%; /* full window width */
     text-align: center;
+    height: 1200px;
    }
 
   #bgd{
@@ -83,6 +84,27 @@
   img{
     width:50%;
     height:80%;
+  }
+
+  #resume {
+    display: flex;
+    align-items: stretch;
+    width: auto;
+    height: auto;
+  }
+
+  #about {
+    /* display: flex; */
+    align-items: stretch;
+    width: 1200px;
+    height: auto;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    font-size: 87.5%;
+    color: #212529;
+  }
+
+  #Home {
+    height: auto;
   }
 
 
