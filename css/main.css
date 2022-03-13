@@ -86,8 +86,11 @@
     height:80%;
   }
 
+  #reading {
+    background-color: rgba(204, 210, 219, 0.5);
+  }
+
   #resume {
-    display: flex;
     align-items: stretch;
     width: auto;
     height: auto;
@@ -96,11 +99,17 @@
   #about {
     /* display: flex; */
     align-items: stretch;
-    width: 1200px;
+    width: auto;
     height: auto;
     font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
     font-size: 87.5%;
     color: #212529;
+    overflow: scroll;
+  }
+
+  .blurb {
+    overflow: scroll;
+    overflow-wrap: break-word;
   }
 
   #Home {
